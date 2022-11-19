@@ -20,7 +20,7 @@ DB_DIALECT=postgres
 
 ```
 $ npm install
-$ npm start
+$ npm run start
 ```
 
 ### Run the app inside a Docker container
