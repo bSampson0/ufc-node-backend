@@ -6,12 +6,10 @@ name: Run Tests
 on:
   push:
   schedule:
-    - cron:  '0 16 * * *'
-  
-jobs:
-  
-  build:
+    - cron: '0 16 * * *'
 
+jobs:
+  build:
     runs-on: ${{ matrix.os }}
     services:
       postgres:
@@ -34,26 +32,26 @@ jobs:
       POSTGRES_PASSWORD: test
       DB_DIALECT: postgres
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Cache Node.js modules
-      uses: actions/cache@v2
-      with:
-      # npm cache files are stored in `~/.npm` on Linux/macOS
-        path: ~/.npm
-        key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.OS }}-node-
-          ${{ runner.OS }}-
-    - name: Install dependencies
-      run: npm run install
-    - name: Run tests
-      run: npm run test 
-    - name: Create coverage report
-      run: yarn coverage
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run test
+      - name: Create coverage report
+        run: yarn coverage
     # Uncomment after setting CODECOV_TOKEN in your repository
     # - name: Upload coverage to Codecov
     #   uses: codecov/codecov-action@v1
