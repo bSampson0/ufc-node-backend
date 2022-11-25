@@ -5,6 +5,10 @@ dotenv.config();
 
 const env: string = process.env.NODE_ENV || 'development';
 
+interface SSL {
+  require: boolean;
+  rejectUnauthorized: boolean;
+}
 interface Config {
   dialect: Dialect;
   storage: string;
@@ -15,6 +19,9 @@ interface Config {
   port: number;
   define: object;
   logging: boolean;
+  dialectOptions: {
+    ssl: SSL;
+  };
 }
 
 const config: Config = {
@@ -27,6 +34,12 @@ const config: Config = {
   database: process.env.POSTGRES_DB,
   host: process.env.POSTGRES_HOST,
   port: Number(process.env.POSTGRES_PORT),
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // This line will fix new error
+    },
+  },
   define: {
     underscore: true,
   },
