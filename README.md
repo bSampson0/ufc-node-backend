@@ -1,8 +1,6 @@
-# myapp app
+# UFC NODE BACKEND
 
-This app was bootstrapped with [Imagine.ai](https://imagine.ai) 💛
-
-> Imagine.ai is an app starter on steroids!
+Backend for Fantasy UFC application.
 
 ### Run the app in terminal
 
@@ -22,7 +20,7 @@ DB_DIALECT=postgres
 
 ```
 $ npm install
-$ npm start
+$ npm run start
 ```
 
 ### Run the app inside a Docker container
@@ -56,12 +54,3 @@ $ npm coverage
 $ npm lint
 $ npm format
 ```
-
-### Learn More
-
-1. Learn more about:
-
-- the [Node architecture choices](https://imagine.ai/docs/architecture-node) used.
-- the [best practices](https://imagine.ai/docs/best-practices) followed.
-
-2. Imagine is in beta - here are the [known issues](https://imagine.ai/docs/known_issues) that we are working to fix.

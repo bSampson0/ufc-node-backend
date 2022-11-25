@@ -10,6 +10,7 @@ interface FighterDict {
   mmaRecord?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const buildFighter = async (fighterFks: any) => {
   const resFighter: FighterDict = {};
 
